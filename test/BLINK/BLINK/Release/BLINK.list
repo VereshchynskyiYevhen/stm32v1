@@ -1,0 +1,179 @@
+
+BLINK.elf:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .isr_vector   000001d0  08000000  08000000  00010000  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  1 .text         0000015c  080001d0  080001d0  000101d0  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .rodata       00000018  0800032c  0800032c  0001032c  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  3 .data         00000004  20000000  08000344  00020000  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  4 .bss          00000000  20000004  08000348  00000000  2**0
+                  ALLOC
+  5 ._user_heap_stack 00000080  20000004  08000348  00020004  2**0
+                  ALLOC
+  6 .ARM.attributes 0000002f  00000000  00000000  00020004  2**0
+                  CONTENTS, READONLY
+  7 .comment      0000007c  00000000  00000000  00020033  2**0
+                  CONTENTS, READONLY
+
+Disassembly of section .text:
+
+080001d0 <SystemInit>:
+ 80001d0:	4b10      	ldr	r3, [pc, #64]	; (8000214 <SystemInit+0x44>)
+ 80001d2:	681a      	ldr	r2, [r3, #0]
+ 80001d4:	f042 0201 	orr.w	r2, r2, #1
+ 80001d8:	601a      	str	r2, [r3, #0]
+ 80001da:	6859      	ldr	r1, [r3, #4]
+ 80001dc:	4a0e      	ldr	r2, [pc, #56]	; (8000218 <SystemInit+0x48>)
+ 80001de:	400a      	ands	r2, r1
+ 80001e0:	605a      	str	r2, [r3, #4]
+ 80001e2:	681a      	ldr	r2, [r3, #0]
+ 80001e4:	f022 7284 	bic.w	r2, r2, #17301504	; 0x1080000
+ 80001e8:	f422 3280 	bic.w	r2, r2, #65536	; 0x10000
+ 80001ec:	601a      	str	r2, [r3, #0]
+ 80001ee:	681a      	ldr	r2, [r3, #0]
+ 80001f0:	f422 2280 	bic.w	r2, r2, #262144	; 0x40000
+ 80001f4:	601a      	str	r2, [r3, #0]
+ 80001f6:	685a      	ldr	r2, [r3, #4]
+ 80001f8:	f422 02fe 	bic.w	r2, r2, #8323072	; 0x7f0000
+ 80001fc:	605a      	str	r2, [r3, #4]
+ 80001fe:	f44f 021f 	mov.w	r2, #10420224	; 0x9f0000
+ 8000202:	609a      	str	r2, [r3, #8]
+ 8000204:	2200      	movs	r2, #0
+ 8000206:	62da      	str	r2, [r3, #44]	; 0x2c
+ 8000208:	f04f 6200 	mov.w	r2, #134217728	; 0x8000000
+ 800020c:	4b03      	ldr	r3, [pc, #12]	; (800021c <SystemInit+0x4c>)
+ 800020e:	609a      	str	r2, [r3, #8]
+ 8000210:	4770      	bx	lr
+ 8000212:	bf00      	nop
+ 8000214:	40021000 	.word	0x40021000
+ 8000218:	f8ff0000 	.word	0xf8ff0000
+ 800021c:	e000ed00 	.word	0xe000ed00
+
+08000220 <SystemCoreClockUpdate>:
+ 8000220:	4a13      	ldr	r2, [pc, #76]	; (8000270 <SystemCoreClockUpdate+0x50>)
+ 8000222:	b510      	push	{r4, lr}
+ 8000224:	6853      	ldr	r3, [r2, #4]
+ 8000226:	4913      	ldr	r1, [pc, #76]	; (8000274 <SystemCoreClockUpdate+0x54>)
+ 8000228:	f003 030c 	and.w	r3, r3, #12
+ 800022c:	2b04      	cmp	r3, #4
+ 800022e:	d001      	beq.n	8000234 <SystemCoreClockUpdate+0x14>
+ 8000230:	2b08      	cmp	r3, #8
+ 8000232:	d00a      	beq.n	800024a <SystemCoreClockUpdate+0x2a>
+ 8000234:	4b10      	ldr	r3, [pc, #64]	; (8000278 <SystemCoreClockUpdate+0x58>)
+ 8000236:	600b      	str	r3, [r1, #0]
+ 8000238:	6853      	ldr	r3, [r2, #4]
+ 800023a:	4a10      	ldr	r2, [pc, #64]	; (800027c <SystemCoreClockUpdate+0x5c>)
+ 800023c:	f3c3 1303 	ubfx	r3, r3, #4, #4
+ 8000240:	5cd2      	ldrb	r2, [r2, r3]
+ 8000242:	680b      	ldr	r3, [r1, #0]
+ 8000244:	40d3      	lsrs	r3, r2
+ 8000246:	600b      	str	r3, [r1, #0]
+ 8000248:	bd10      	pop	{r4, pc}
+ 800024a:	6853      	ldr	r3, [r2, #4]
+ 800024c:	6850      	ldr	r0, [r2, #4]
+ 800024e:	f3c3 4383 	ubfx	r3, r3, #18, #4
+ 8000252:	03c0      	lsls	r0, r0, #15
+ 8000254:	bf41      	itttt	mi
+ 8000256:	6ad0      	ldrmi	r0, [r2, #44]	; 0x2c
+ 8000258:	4c07      	ldrmi	r4, [pc, #28]	; (8000278 <SystemCoreClockUpdate+0x58>)
+ 800025a:	f000 000f 	andmi.w	r0, r0, #15
+ 800025e:	3001      	addmi	r0, #1
+ 8000260:	bf4c      	ite	mi
+ 8000262:	fbb4 f0f0 	udivmi	r0, r4, r0
+ 8000266:	4806      	ldrpl	r0, [pc, #24]	; (8000280 <SystemCoreClockUpdate+0x60>)
+ 8000268:	3302      	adds	r3, #2
+ 800026a:	4343      	muls	r3, r0
+ 800026c:	e7e3      	b.n	8000236 <SystemCoreClockUpdate+0x16>
+ 800026e:	bf00      	nop
+ 8000270:	40021000 	.word	0x40021000
+ 8000274:	20000000 	.word	0x20000000
+ 8000278:	007a1200 	.word	0x007a1200
+ 800027c:	0800032c 	.word	0x0800032c
+ 8000280:	003d0900 	.word	0x003d0900
+
+08000284 <GPIO_Init>:
+ 8000284:	4a07      	ldr	r2, [pc, #28]	; (80002a4 <GPIO_Init+0x20>)
+ 8000286:	6993      	ldr	r3, [r2, #24]
+ 8000288:	f043 0310 	orr.w	r3, r3, #16
+ 800028c:	6193      	str	r3, [r2, #24]
+ 800028e:	4b06      	ldr	r3, [pc, #24]	; (80002a8 <GPIO_Init+0x24>)
+ 8000290:	685a      	ldr	r2, [r3, #4]
+ 8000292:	f022 02cc 	bic.w	r2, r2, #204	; 0xcc
+ 8000296:	605a      	str	r2, [r3, #4]
+ 8000298:	685a      	ldr	r2, [r3, #4]
+ 800029a:	f042 0233 	orr.w	r2, r2, #51	; 0x33
+ 800029e:	605a      	str	r2, [r3, #4]
+ 80002a0:	4770      	bx	lr
+ 80002a2:	bf00      	nop
+ 80002a4:	40021000 	.word	0x40021000
+ 80002a8:	40011000 	.word	0x40011000
+
+080002ac <Delay>:
+ 80002ac:	4b02      	ldr	r3, [pc, #8]	; (80002b8 <Delay+0xc>)
+ 80002ae:	bf00      	nop
+ 80002b0:	3b01      	subs	r3, #1
+ 80002b2:	d1fc      	bne.n	80002ae <Delay+0x2>
+ 80002b4:	4770      	bx	lr
+ 80002b6:	bf00      	nop
+ 80002b8:	00989680 	.word	0x00989680
+
+080002bc <Reset_Handler>:
+ 80002bc:	2100      	movs	r1, #0
+ 80002be:	e003      	b.n	80002c8 <LoopCopyDataInit>
+
+080002c0 <CopyDataInit>:
+ 80002c0:	4b0a      	ldr	r3, [pc, #40]	; (80002ec <LoopFillZerobss+0x10>)
+ 80002c2:	585b      	ldr	r3, [r3, r1]
+ 80002c4:	5043      	str	r3, [r0, r1]
+ 80002c6:	3104      	adds	r1, #4
+
+080002c8 <LoopCopyDataInit>:
+ 80002c8:	4809      	ldr	r0, [pc, #36]	; (80002f0 <LoopFillZerobss+0x14>)
+ 80002ca:	4b0a      	ldr	r3, [pc, #40]	; (80002f4 <LoopFillZerobss+0x18>)
+ 80002cc:	1842      	adds	r2, r0, r1
+ 80002ce:	429a      	cmp	r2, r3
+ 80002d0:	d3f6      	bcc.n	80002c0 <CopyDataInit>
+ 80002d2:	4a09      	ldr	r2, [pc, #36]	; (80002f8 <LoopFillZerobss+0x1c>)
+ 80002d4:	e002      	b.n	80002dc <LoopFillZerobss>
+
+080002d6 <FillZerobss>:
+ 80002d6:	2300      	movs	r3, #0
+ 80002d8:	f842 3b04 	str.w	r3, [r2], #4
+
+080002dc <LoopFillZerobss>:
+ 80002dc:	4b07      	ldr	r3, [pc, #28]	; (80002fc <LoopFillZerobss+0x20>)
+ 80002de:	429a      	cmp	r2, r3
+ 80002e0:	d3f9      	bcc.n	80002d6 <FillZerobss>
+ 80002e2:	f7ff ff75 	bl	80001d0 <SystemInit>
+ 80002e6:	f000 f80d 	bl	8000304 <main>
+ 80002ea:	4770      	bx	lr
+ 80002ec:	08000344 	.word	0x08000344
+ 80002f0:	20000000 	.word	0x20000000
+ 80002f4:	20000004 	.word	0x20000004
+ 80002f8:	20000004 	.word	0x20000004
+ 80002fc:	20000004 	.word	0x20000004
+
+08000300 <ADC1_IRQHandler>:
+ 8000300:	e7fe      	b.n	8000300 <ADC1_IRQHandler>
+	...
+
+08000304 <main>:
+ 8000304:	b508      	push	{r3, lr}
+ 8000306:	f7ff ffbd 	bl	8000284 <GPIO_Init>
+ 800030a:	4a07      	ldr	r2, [pc, #28]	; (8000328 <main+0x24>)
+ 800030c:	68d3      	ldr	r3, [r2, #12]
+ 800030e:	f443 5300 	orr.w	r3, r3, #8192	; 0x2000
+ 8000312:	60d3      	str	r3, [r2, #12]
+ 8000314:	f7ff ffca 	bl	80002ac <Delay>
+ 8000318:	68d3      	ldr	r3, [r2, #12]
+ 800031a:	f423 5300 	bic.w	r3, r3, #8192	; 0x2000
+ 800031e:	60d3      	str	r3, [r2, #12]
+ 8000320:	f7ff ffc4 	bl	80002ac <Delay>
+ 8000324:	e7f2      	b.n	800030c <main+0x8>
+ 8000326:	bf00      	nop
+ 8000328:	40011000 	.word	0x40011000

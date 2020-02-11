@@ -1,0 +1,10 @@
+#include "gpio.h"
+
+
+void GPIO_Init(void)
+{
+	RCC->APB2ENR |= RCC_APB2ENR_IOPCEN;
+
+	GPIOC->CRH &= ~(GPIO_CRH_CNF8 | GPIO_CRH_CNF9);
+	GPIOC->CRH |= (GPIO_CRH_MODE8|GPIO_CRH_MODE9);
+}

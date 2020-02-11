@@ -1,0 +1,16 @@
+system_stm32f1xx.pbi: \
+  C:\Users\ducka\Desktop\stm32\f100_iar_blink\CMSIS\Device\ST\STM32F1xx\Source\Templates\system_stm32f1xx.c \
+  C:\Users\ducka\Desktop\stm32\f100_iar_blink\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h \
+  C:\Users\ducka\Desktop\stm32\f100_iar_blink\CMSIS\Device\ST\STM32F1xx\Include/stm32f100xb.h \
+  C:\Users\ducka\Desktop\stm32\f100_iar_blink\CMSIS\Core\Include\core_cm3.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\stdint.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\ycheck.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\yvals.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\DLib_Defaults.h \
+  C:\\Program\ Files\ (x86)\\IAR\ Systems\\Embedded\ Workbench\ 8.4\\arm\\inc\\c\\DLib_Config_Normal.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\DLib_Product.h \
+  C:\Users\ducka\Desktop\stm32\f100_iar_blink\CMSIS\Core\Include/cmsis_version.h \
+  C:\Users\ducka\Desktop\stm32\f100_iar_blink\CMSIS\Core\Include/cmsis_compiler.h \
+  C:\Users\ducka\Desktop\stm32\f100_iar_blink\CMSIS\Core\Include\cmsis_iccarm.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\iccarm_builtin.h \
+  C:\Users\ducka\Desktop\stm32\f100_iar_blink\CMSIS\Device\ST\STM32F1xx\Include/system_stm32f1xx.h
