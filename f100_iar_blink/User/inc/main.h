@@ -1,11 +1,11 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include "stm32f1xx.h"
+#include "stm32f10x.h"
 
 
 void GPIO_Init(void);
-void TIM4_init(void)   ;
-void RCC_CIR_init(void);
-void TIM4RST_init(void);
+void TIM4_Init(void);
+
+
 #endif
